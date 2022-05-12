@@ -53,10 +53,9 @@ class HouseImage(models.Model):
     created_at = models.DateTimeField(auto_now=True)
     delete_at = models.DateTimeField(null=True)
     updated_at = models.DateTimeField(auto_now_add=True)
-    
+        
     def __str__(self):
-        return self.house    
-         
+        return self.house         
     
 
 # Create your models here.
