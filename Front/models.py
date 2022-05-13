@@ -25,9 +25,9 @@ class Contact(models.Model):
     latitude = models.DecimalField(max_digits=5, decimal_places=2)
     longitude = models.DecimalField(max_digits=5 , decimal_places=2)
     
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now=True)
     delete_at = models.DateTimeField(null=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return self.fb_link
@@ -40,9 +40,9 @@ class Slider(models.Model):
     image2 = models.URLField()
     image3 = models.URLField()
     
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now=True)
     delete_at = models.DateTimeField(null=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return self.title1
