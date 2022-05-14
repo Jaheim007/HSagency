@@ -2,8 +2,8 @@ from django.db import models
 
 class SiteInfo(models.Model):     
     title = models.CharField(max_length=255)
-    mainColor = models.CharField(max_length=255)
-    fullSiteColor = models.CharField(max_length=255)
+    main_color = models.CharField(max_length=255)
+    full_site_color = models.CharField(max_length=255)
     default_mode = models.BooleanField(default=True)
     
     created_at = models.DateTimeField(auto_now=True)
