@@ -5,6 +5,7 @@ from . import models
 def index(request):
     datas = {
         "sliders": models.Slider.objects.all(),
+        "services": models.SiteService.objects.all(),
     }
     return render(request,'pages/index.html', context=datas)
     

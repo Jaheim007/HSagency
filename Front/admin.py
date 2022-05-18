@@ -3,8 +3,16 @@ from .models import *
 
 @admin.register(Slider)
 class Slide(admin.ModelAdmin):
-    list_display = ('title','contry')
+    list_display = (
+        "title", 
+        "contry", 
+        "created", 
+    )
 
-
-
-# Register your models here.
+@admin.register(SiteService)
+class SiteService(admin.ModelAdmin):
+    list_display = (
+        "title", 
+        "description", 
+        "created",   
+    )
