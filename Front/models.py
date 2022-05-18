@@ -1,4 +1,7 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
+from django.utils import timezone
+from django_countries.fields import CountryField
 
 class SiteInfo(models.Model):     
     title = models.CharField(max_length=255)
@@ -33,19 +36,13 @@ class Contact(models.Model):
         return self.fb_link
         
 class Slider(models.Model):
-    title1 = models.CharField(max_length = 255)
-    title2 = models.CharField(max_length = 255)
-    title3 = models.CharField(max_length = 255)     
-    image1 = models.URLField()
-    image2 = models.URLField()
-    image3 = models.URLField()
-    
-    created_at = models.DateTimeField(auto_now=True)
-    delete_at = models.DateTimeField(null=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    contry = CountryField(blank_label='(select country)')
+    city = models.CharField(max_length=255)
+    title = models.CharField(max_length=255)
+    price = models.IntegerField(validators=[MinValueValidator(1)])
+    photo_house = models.ImageField()
+    created = models.DateTimeField(default=timezone.now())
     
     def __str__(self):
-        return self.title1
+        return self.title
     
-
-# Create your models here.
