@@ -35,11 +35,25 @@ class Contact(models.Model):
     def __str__(self):
         return self.fb_link
         
-class Slider(models.Model):
+class House(models.Model):
+    """
+    Cette class va permette d'éffectuer des CRUD sur les maisons
+
+    Args:
+        models (Model): Cette class nous permet de un models
+
+    Returns:
+        str : Elle nous retoune le titre de chaque instance crée
+    """
     contry = CountryField(blank_label='(select country)')
     city = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
-    price = models.IntegerField(validators=[MinValueValidator(1)])
+    price = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(1_000_000_000)])
+    area = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(1_000_000_000)])
+    beds = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(1_000_000_000)])
+    baths = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(1_000_000_000)])
+    garages = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(1_000_000_000)])
+    
     photo_house = models.ImageField()
     created = models.DateTimeField(default=timezone.now())
     
@@ -47,6 +61,16 @@ class Slider(models.Model):
         return self.title
 
 class SiteService(models.Model):
+    """
+    Cette class va permette d'éffectuer des CRUD sur les services
+    de que propose l'agence sur la page d'index
+
+    Args:
+        models (Model): Cette class nous permet de un models_
+
+    Returns:
+        str : Elle nous retoune le titre de chaque instance crée
+    """
     title = models.CharField(max_length=255)
     description = models.CharField(max_length=1000)
     photo_service = models.ImageField()

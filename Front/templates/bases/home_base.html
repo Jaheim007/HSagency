@@ -186,8 +186,8 @@
   <div class="intro intro-carousel swiper position-relative">
 
     <div class="swiper-wrapper">
-      {% for slider in sliders %}
-        <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url({{ slider.photo_house.url }})">
+      {% for house in houses %}
+        <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url({{ house.photo_house.url }})">
           <div class="overlay overlay-a"></div>
           <div class="intro-content display-table">
             <div class="table-cell">
@@ -195,14 +195,14 @@
                 <div class="row">
                   <div class="col-lg-8">
                     <div class="intro-body">
-                      <p class="intro-title-top">{{ slider.contry }}, {{ slider.city }}
+                      <p class="intro-title-top">{{ house.contry }}, {{ house.city }}
                         <br> 78345
                       </p>
                       <h1 class="intro-title mb-4 ">
-                        <span class="color-b"> {{ slider.title }} </span> 
+                        <span class="color-b"> {{ house.title }} </span> 
                       </h1>
                       <p class="intro-subtitle intro-price">
-                        <a href="#"><span class="price-a">rent | $ {{ slider.price }}</span></a>
+                        <a href="#"><span class="price-a">rent | $ {{ house.price }}</span></a>
                       </p>
                     </div>
                   </div>
