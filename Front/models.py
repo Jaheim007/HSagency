@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
-from django.utils import timezone
+from datetime import datetime
 from django_countries.fields import CountryField
 
 class SiteInfo(models.Model):     
@@ -55,7 +55,9 @@ class House(models.Model):
     garages = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(1_000_000_000)])
     
     photo_house = models.ImageField()
-    created = models.DateTimeField(default=timezone.now())
+    date_created = models.DateTimeField()
+    date_update = models.DateTimeField()
+    
     
     def __str__(self):
         return self.title
@@ -74,7 +76,7 @@ class SiteService(models.Model):
     title = models.CharField(max_length=255)
     description = models.CharField(max_length=1000)
     photo_service = models.ImageField()
-    created = models.DateTimeField(default=timezone.now())
+    created = models.DateTimeField()
 
     def __str__(self):
         return self.title

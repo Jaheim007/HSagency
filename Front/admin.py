@@ -6,7 +6,7 @@ class Slide(admin.ModelAdmin):
     list_display = (
         "title", 
         "contry", 
-        "created", 
+        "date_created", 
     )
 
 @admin.register(SiteService)
