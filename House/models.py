@@ -11,7 +11,7 @@ class HouseType(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return self.name_number
+        return self.name
     
 class HousePaymentPeriod(models.Model):
     name = models.CharField(max_length=255)
