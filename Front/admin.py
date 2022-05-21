@@ -1,11 +1,10 @@
 from django.contrib import admin
-from .models import *
+from .models import HouseSlide, SiteService
 
-@admin.register(House)
+@admin.register(HouseSlide)
 class Slide(admin.ModelAdmin):
     list_display = (
-        "title", 
-        "contry", 
+        "house_slide", 
         "created", 
     )
 

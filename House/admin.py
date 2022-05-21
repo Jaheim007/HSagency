@@ -1,10 +1,15 @@
 from django.contrib import admin
-from .models import *
+from .models import (
+    House,
+    HousePaymentPeriod,
+    HouseImage,
+    HouseType,
+)
 
 
 @admin.register(House)
 class HouseInfo(admin.ModelAdmin):
-    list_display = ('agent', 'main_image', 'rooms_number', 'garage_number', 'toillete_number', 'address_name', 'price', 'price_payment', 'house_type', 'latitude', 'longitude')
+    list_display = ('info_agent', 'main_image', 'rooms_number', 'garage_number', 'toillete_number', 'price', 'house_type', 'latitude', 'longitude')
 
 @admin.register(HousePaymentPeriod)
 class Period(admin.ModelAdmin):

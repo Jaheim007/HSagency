@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.utils import timezone
-from django_countries.fields import CountryField
+from House.models import House
 
 class SiteInfo(models.Model):     
     title = models.CharField(max_length=255)
@@ -9,7 +9,7 @@ class SiteInfo(models.Model):
     full_site_color = models.CharField(max_length=255)
     default_mode = models.BooleanField(default=True)
     
-    created_at = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(default=timezone.now())
     delete_at = models.DateTimeField(null=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     
@@ -28,14 +28,14 @@ class Contact(models.Model):
     latitude = models.DecimalField(max_digits=5, decimal_places=2)
     longitude = models.DecimalField(max_digits=5 , decimal_places=2)
     
-    created_at = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(default=timezone.now())
     delete_at = models.DateTimeField(null=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return self.fb_link
         
-class House(models.Model):
+class HouseSlide(models.Model):
     """
     Cette class va permette d'éffectuer des CRUD sur les maisons
 
@@ -45,20 +45,12 @@ class House(models.Model):
     Returns:
         str : Elle nous retoune le titre de chaque instance crée
     """
-    contry = CountryField(blank_label='(select country)')
-    city = models.CharField(max_length=255)
-    title = models.CharField(max_length=255)
-    price = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(1_000_000_000)])
-    area = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(1_000_000_000)])
-    beds = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(1_000_000_000)])
-    baths = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(1_000_000_000)])
-    garages = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(1_000_000_000)])
     
-    photo_house = models.ImageField()
+    house_slide = models.ForeignKey(House, on_delete=models.CASCADE)
     created = models.DateTimeField(default=timezone.now())
     
     def __str__(self):
-        return self.title
+        return self.house_slide.title
 
 class SiteService(models.Model):
     """
