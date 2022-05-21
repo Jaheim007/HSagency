@@ -39,6 +39,8 @@ class Slider(models.Model):
     image1 = models.URLField()
     image2 = models.URLField()
     image3 = models.URLField()
+    image4 = models.URLField()
+
     
     created_at = models.DateTimeField(auto_now=True)
     delete_at = models.DateTimeField(null=True)

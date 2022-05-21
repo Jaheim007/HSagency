@@ -7,9 +7,11 @@
   <!-- ======= Intro Section ======= -->
 <div class="intro intro-carousel swiper position-relative">
 
+   
+    
     <div class="swiper-wrapper">
-
-      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url({% static 'front/assets/img/slide-1.jpg' %})">
+    {% for item in slider %}
+      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url({{ item.image1 }})">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
           <div class="table-cell">
@@ -33,8 +35,9 @@
             </div>
           </div>
         </div>
+    
       </div>
-      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url({% static 'front/assets/img/slide-2.jpg' %})">
+      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url({{ item.image2 }})">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
           <div class="table-cell">
@@ -59,7 +62,7 @@
           </div>
         </div>
       </div>
-      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url({% static 'front/assets/img/slide-3.jpg' %})">
+      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url({{ item.image3}})">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
           <div class="table-cell">
@@ -85,6 +88,7 @@
         </div>
       </div>
     </div>
+    {% endfor %}
     <div class="swiper-pagination"></div>
 </div><!-- End Intro Section -->
 
