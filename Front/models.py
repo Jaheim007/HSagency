@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
-from django.utils import timezone
+from django.utils.timezone import now
 from House.models import House
 
 class SiteInfo(models.Model):     
@@ -9,7 +9,7 @@ class SiteInfo(models.Model):
     full_site_color = models.CharField(max_length=255)
     default_mode = models.BooleanField(default=True)
     
-    created = models.DateTimeField(default=timezone.now())
+    created = models.DateTimeField(default=now)
     delete_at = models.DateTimeField(null=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     
@@ -28,7 +28,7 @@ class Contact(models.Model):
     latitude = models.DecimalField(max_digits=5, decimal_places=2)
     longitude = models.DecimalField(max_digits=5 , decimal_places=2)
     
-    created = models.DateTimeField(default=timezone.now())
+    created = models.DateTimeField(default=now)
     delete_at = models.DateTimeField(null=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     
@@ -47,7 +47,7 @@ class HouseSlide(models.Model):
     """
     
     house_slide = models.ForeignKey(House, on_delete=models.CASCADE)
-    created = models.DateTimeField(default=timezone.now())
+    created = models.DateTimeField(default=now)
     
     def __str__(self):
         return self.house_slide.title
@@ -66,7 +66,7 @@ class SiteService(models.Model):
     title = models.CharField(max_length=255)
     description = models.CharField(max_length=1000)
     photo_service = models.ImageField()
-    created = models.DateTimeField(default=timezone.now())
+    created = models.DateTimeField(default=now)
 
     def __str__(self):
         return self.title
