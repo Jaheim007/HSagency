@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'House.apps.HouseConfig',
     'customers.apps.CustomersConfig',
     'django_countries',
+    'phonenumber_field',
     
 ]
 

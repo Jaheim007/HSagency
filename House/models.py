@@ -11,11 +11,11 @@ class HouseType(models.Model):
     description = models.TextField(null=True)
     
     created = models.DateTimeField(default=timezone.now())
-    delete_at = models.DateTimeField(null=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    delete_at = models.DateTimeField(null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now_add=True, blank=True)
     
     def __str__(self):
-        return self.name_number
+        return self.name
     
 class HousePaymentPeriod(models.Model):
     name = models.CharField(max_length=255)
@@ -24,8 +24,8 @@ class HousePaymentPeriod(models.Model):
     symbol = models.CharField(max_length=2)
     
     created = models.DateTimeField(default=timezone.now())
-    delete_at = models.DateTimeField(null=True)
-    updated_at = models.DateTimeField(auto_now_add=True) 
+    delete_at = models.DateTimeField(null=True, blank=True)
+    updated_at = models.DateTimeField(null=True, blank=True) 
     
     def __str__(self):
         return self.name
@@ -47,20 +47,20 @@ class House(models.Model):
     longitude = models.DecimalField(max_digits=5, decimal_places=2)
     
     house_type = models.ForeignKey(HouseType, on_delete=models.CASCADE)
-    main_image = models.URLField()
+    main_image = models.ImageField()
     
     created = models.DateTimeField(default=timezone.now())
     
     def __str__(self):
-        return self.info_agent
+        return str(self.title)
     
 class HouseImage(models.Model):
     house = models.ForeignKey(House, on_delete=models.CASCADE)
     image = models.URLField()
     
     created = models.DateTimeField(default=timezone.now())
-    delete_at = models.DateTimeField(null=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    delete_at = models.DateTimeField(null=True, blank=True)
+    updated_at = models.DateTimeField(null=True, blank=True)
         
     def __str__(self):
         return self.house         
