@@ -3,13 +3,14 @@ from django.shortcuts import render
 from . import models
 from Front.models import HouseSlide 
 from customers.models import InfoAgent 
-
+from House.models import LatestNews 
 
 def index(request):
     datas = {
         "house_sliders": HouseSlide.objects.all(),
         "services": models.SiteService.objects.all(),
         "agents": InfoAgent.objects.all(),
+        "latests ": LatestNews.objects.all(),
     }
     return render(request,'pages/index.html', context=datas)
     

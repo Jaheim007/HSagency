@@ -38,7 +38,7 @@ class House(models.Model):
     contry = CountryField(blank_label='(select country)')
     city = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
-    real_estate_type = models.ForeignKey(RealEstateType, on_delete=models.CASCADE, related_name="+")
+    real_estate_type = models.ForeignKey(RealEstateType, on_delete=models.CASCADE,)
     house_type = models.ForeignKey(HouseType, on_delete=models.CASCADE)
 
     price = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(1_000_000_000)])
@@ -50,8 +50,6 @@ class House(models.Model):
     
     latitude = models.DecimalField(max_digits=5, decimal_places=2)
     longitude = models.DecimalField(max_digits=5, decimal_places=2)
-    
-    house_type = models.ForeignKey(HouseType, on_delete=models.CASCADE)
     main_image = models.ImageField()
     
     created = models.DateTimeField(default=now)
@@ -75,7 +73,6 @@ class LatestNews(models.Model):
     house = models.ForeignKey(House, on_delete=models.CASCADE)
     message = models.CharField(max_length=50)
     available_date = models.DateTimeField()
-    
     created = models.DateTimeField(default=now)
     delete_at = models.DateTimeField(blank=True, null=True)
     updated_at = models.DateTimeField(blank=True, null=True)
