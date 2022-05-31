@@ -38,16 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
     'Front',
     'House',
     'customers',
-=======
     'Front.apps.FrontConfig',
     'House.apps.HouseConfig',
     'customers.apps.CustomersConfig',
     'django_countries',
->>>>>>> 937bd7ec2e21f53ec83925a80377daaf4914aebb
     
 ]
 
