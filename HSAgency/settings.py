@@ -38,9 +38,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     'Front',
     'House',
     'customers',
+=======
+    'Front.apps.FrontConfig',
+    'House.apps.HouseConfig',
+    'customers.apps.CustomersConfig',
+    'django_countries',
+>>>>>>> 937bd7ec2e21f53ec83925a80377daaf4914aebb
     
 ]
 
@@ -122,14 +129,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-MEDIA_URL = '/media/'
-
-MEDIA_ROOT = BASE_DIR / 'media'
-
-
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'customers.User'
+
+# fotoblog/settings.py
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
