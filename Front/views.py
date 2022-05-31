@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from Front.models import HouseSlide, SiteService
-from customers.models import InfoAgent 
+from customers.models import InfoAgent, Testimonials
 from House.models import LatestNews 
 
 def index(request):
@@ -9,6 +9,7 @@ def index(request):
         "services": SiteService.objects.all(),
         "agents": InfoAgent.objects.all(),
         "latests_news": LatestNews.objects.all(),
+        "testimonials": Testimonials.objects.all(),
     }
     return render(request,'pages/index.html', context=datas)
     

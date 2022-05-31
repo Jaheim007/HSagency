@@ -5,12 +5,10 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class User(AbstractUser):
-    ADMIN = 'AD'
     CLIENT = 'CL'
     AGENT = 'AG'
     
     USER_TYPE = [
-        (ADMIN,'admin'),
         (AGENT,'agent'),
         (CLIENT,'client')
     ]
@@ -21,9 +19,9 @@ class User(AbstractUser):
     birth_date = models.DateField(null=True, blank=True)
     user_type = models.CharField(choices=USER_TYPE, max_length=255)
     
-    created_at = models.DateTimeField(default=timezone.now)
-    delete_at = models.DateTimeField(null=True, blank=True)
-    updated_at = models.DateTimeField(null=True, blank=True)
+    created = models.DateTimeField(default=timezone.now)
+    deleted = models.DateTimeField(null=True, blank=True)
+    updated = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return self.username
@@ -38,10 +36,20 @@ class InfoAgent(models.Model):
     whatsapp_number = PhoneNumberField(blank=True, null=True)
     
     created = models.DateTimeField(default=timezone.now)
-    delete_at = models.DateTimeField(blank=True, null=True)
-    updated_at = models.DateTimeField(null=True, blank=True)
+    deleted = models.DateTimeField(blank=True, null=True)
+    updated = models.DateTimeField(null=True, blank=True)
     
     def __str__(self):
         return self.user.username
 
+    
+class Testimonials(models.Model):
+    user = models.ForeignKey(User, on_delete=models.RESTRICT)
+    message = models.CharField(max_length=1000)
+    created = models.DateTimeField(default=timezone.now)
+    deleted = models.DateTimeField(blank=True, null=True)
+    updated = models.DateTimeField(null=True, blank=True)
+    
+    def __str__(self):
+        return self.user.username
     

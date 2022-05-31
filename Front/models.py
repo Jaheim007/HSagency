@@ -48,11 +48,8 @@ class HouseSlide(models.Model):
         str : Elle nous retoune le titre de chaque instance crée
     """
     
-    photo_house = models.ImageField()
-    date_created = models.DateTimeField(default=now)
-    date_update = models.DateTimeField(default=now)
-    
     house_slide = models.ForeignKey(House, on_delete=models.CASCADE)
+    date_update = models.DateTimeField(default=now)    
     created = models.DateTimeField(default=now)
     
     def __str__(self):
