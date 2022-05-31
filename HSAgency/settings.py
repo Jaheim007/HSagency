@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'House.apps.HouseConfig',
     'customers.apps.CustomersConfig',
     'django_countries',
+    'phonenumber_field',
     
 ]
 
@@ -132,3 +133,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+AUTH_USER_MODEL = "customers.User"
