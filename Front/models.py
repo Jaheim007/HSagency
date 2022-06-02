@@ -96,6 +96,7 @@ class AboutSectionTwo(models.Model):
     created = models.DateTimeField(auto_now=True)
     
 class Team(models.Model):
+    title = models.CharField(max_length=255, default='Exemple de titre')
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
