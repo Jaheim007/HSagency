@@ -8,7 +8,7 @@ from Front.models import (
     Team,
 )
 from customers.models import InfoAgent, Testimonials
-from House.models import LatestNews 
+from House.models import LatestNews, House
 
 def index(request):
     datas = {
@@ -24,16 +24,16 @@ def index(request):
 
 def about(request):
     datas = {
+        "teams": Team.objects.all(),
         "contact": Contact.objects.first(),
         "aboutsectiontwo": AboutSectionTwo.objects.first(),
         "aboutsectionone": AboutSectionOne.objects.first(),
-        "teams": Team.objects.all(),
     }
     return render(request,'pages/about.html', context=datas)
 
 
 def property(request):
-    return render(request,'pages/property.html')
+    return render(request,'pages/property.html', context={"houses": House.objects.all(),})
 
 
 

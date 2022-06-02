@@ -40,6 +40,8 @@ class House(models.Model):
     title = models.CharField(max_length=255)
     real_estate_type = models.ForeignKey(RealEstateType, on_delete=models.CASCADE,)
     house_type = models.ForeignKey(HouseType, on_delete=models.CASCADE)
+    
+    beds = models.PositiveIntegerField(validators=[MinValueValidator(1)], default=3)
 
     price = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(1_000_000_000)])
     area = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(1_000_000_000)])
