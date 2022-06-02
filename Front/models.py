@@ -1,9 +1,9 @@
+from email.policy import default
 from django.db import models
-from django.core.validators import MaxValueValidator, MinValueValidator
-from datetime import datetime
-from django_countries.fields import CountryField
 from django.utils.timezone import now
 from House.models import House
+from phonenumber_field.modelfields import PhoneNumberField
+
 
 class SiteInfo(models.Model):     
     title = models.CharField(max_length=255)
@@ -17,25 +17,25 @@ class SiteInfo(models.Model):
     
     def __str__(self):
         return self.title
+    
 
 class Contact(models.Model): 
-    fb_link = models.URLField(null=True)
-    insta_link = models.URLField(null=True)
-    twitter_link = models.URLField(null=True)
-    linkedin_link = models.URLField(null=True)
-    site_contact = models.CharField(max_length=50) 
-    main_phone = models.CharField(max_length=10) 
-    dial_code = models.CharField(max_length=4)
-    email = models.EmailField(max_length=50)  
+    fb_link = models.URLField()
+    insta_link = models.URLField()
+    twitter_link = models.URLField()
+    linkedin_link = models.URLField()
+    number_phone = PhoneNumberField()
+    email = models.EmailField(max_length=50)
+    
     latitude = models.DecimalField(max_digits=5, decimal_places=2)
     longitude = models.DecimalField(max_digits=5 , decimal_places=2)
     
     created = models.DateTimeField(default=now)
-    delete_at = models.DateTimeField(null=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    deleted = models.DateTimeField(auto_now=True)
+    updated = models.DateTimeField(auto_now=True)
     
     def __str__(self):
-        return self.fb_link
+        return self.email
         
 class HouseSlide(models.Model):
     """
@@ -74,7 +74,40 @@ class SiteService(models.Model):
     def __str__(self):
         return self.title
 
-        
-        
-        
+# Page about
+class AboutSectionOne(models.Model):
+    title_one = models.CharField(max_length=255)
+    title_two = models.CharField(max_length=255)
+    text = models.CharField(max_length=255)
+    photo = models.ImageField()
+    
+    created = models.DateTimeField(default=now())
+    deleted = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now=True)
+    
+class AboutSectionTwo(models.Model):
+    title_one = models.CharField(max_length=255)
+    title_two = models.CharField(max_length=255)
+    description = models.CharField(max_length=255)
+    photo = models.ImageField()
+    
+    created = models.DateTimeField(default=now())
+    deleted = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now=True)
+    
+class Team(models.Model):
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    description = models.CharField(max_length=255)
+    number_phone = PhoneNumberField()
+    email = models.EmailField()
+    fb_link = models.URLField(default="https://www.google.com/")
+    instagram_link = models.URLField(default="https://www.google.com/")
+    twitter_link = models.URLField(default="https://www.google.com/")
+    linkedin_link = models.URLField(default="https://www.google.com/")
+    photo = models.ImageField()
+    
+    created = models.DateTimeField(default=now())
+    deleted = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now=True)
     
