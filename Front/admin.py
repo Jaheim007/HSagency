@@ -13,5 +13,9 @@ class ContactInfo(admin.ModelAdmin):
 class Site(admin.ModelAdmin):
     list_display = ('title', 'main_color', 'full_site_color', 'default_mode')
 
+@admin.register(Service)
+class Service(admin.ModelAdmin):
+    list_display = ('icon','service_name')
+
 
 # Register your models here.

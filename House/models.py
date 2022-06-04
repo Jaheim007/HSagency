@@ -17,7 +17,7 @@ class HousePaymentPeriod(models.Model):
     name = models.CharField(max_length=255)
     isactive = models.BooleanField(default=True)
     description = models.TextField(null=True) 
-    symbol = models.CharField(max_length=2)
+    symbol = models.CharField(max_length=3)
     
     created_at = models.DateTimeField(auto_now=True)
     delete_at = models.DateTimeField(null=True)
@@ -34,7 +34,7 @@ class House(models.Model):
     toillete_number = models.IntegerField()
     address_name = models.CharField(max_length=255)
     price = models.CharField(max_length=255)
-    price_payment = models.ForeignKey(HousePaymentPeriod , on_delete=models.CASCADE)
+    price_payment = models.ForeignKey(HousePaymentPeriod , on_delete=models.CASCADE , related_name='house_payment_period')
     house_type = models.ForeignKey(HouseType, on_delete=models.CASCADE)
     latitude = models.DecimalField(max_digits=5, decimal_places=2)
     longitude = models.DecimalField(max_digits=5, decimal_places=2)
@@ -44,7 +44,7 @@ class House(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return self.agent
+        return self.agent.user.username
     
 class HouseImage(models.Model):
     house = models.ForeignKey(House , on_delete=models.CASCADE , related_name="house_houseimage")

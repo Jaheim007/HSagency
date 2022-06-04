@@ -10,5 +10,5 @@ urlpatterns = [
     path('blog_single',views.blog_single, name="blog_single"),
     path('agent_single',views.agents_single, name="agent_single"),
     path('agent',views.agents_grid, name="agents"),
-    path('property_grid',views.property_grid, name="property_grid"),
+    path('property_single',views.property_single, name="property_single"),
 ]

@@ -22,8 +22,8 @@ class Contact(models.Model):
     main_phone = models.CharField(max_length=10) 
     dial_code = models.CharField(max_length=4)
     email = models.EmailField(max_length=50)  
-    latitude = models.DecimalField(max_digits=5, decimal_places=2)
-    longitude = models.DecimalField(max_digits=5 , decimal_places=2)
+    latitude = models.DecimalField(max_digits=11, decimal_places=10)
+    longitude = models.DecimalField(max_digits=11 , decimal_places=10)
     
     created_at = models.DateTimeField(auto_now=True)
     delete_at = models.DateTimeField(null=True)
@@ -48,6 +48,22 @@ class Slider(models.Model):
     
     def __str__(self):
         return self.title1
+    
+class Service(models.Model):     
+    icon = models.CharField(max_length=255)
+    service_name =models.CharField(max_length=255)
+    service_description = models.TextField()
+    
+    
+    created_at = models.DateTimeField(auto_now=True)
+    delete_at = models.DateTimeField(null=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.service_name
+    
+    
+     
     
 
 # Create your models here.
