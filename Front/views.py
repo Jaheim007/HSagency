@@ -1,26 +1,43 @@
-from email.mime import image
 from django.shortcuts import render
-from . import models
-from Front.models import HouseSlide 
-from customers.models import InfoAgent 
-from House.models import LatestNews 
+from Front.models import (
+    HouseSlide,
+    SiteService,
+    Contact,
+    AboutSectionTwo,
+    AboutSectionOne,
+    Team,
+)
+from customers.models import InfoAgent, Testimonials
+from House.models import LatestNews, House
 
 def index(request):
     datas = {
         "house_sliders": HouseSlide.objects.all(),
-        "services": models.SiteService.objects.all(),
+        "services": SiteService.objects.all(),
         "agents": InfoAgent.objects.all(),
-        "latests ": LatestNews.objects.all(),
+        "latests_news": LatestNews.objects.all(),
+        "testimonials": Testimonials.objects.all(),
+        "contact": Contact.objects.first(),
     }
     return render(request,'pages/index.html', context=datas)
 
 
 def about(request):
-    return render(request,'pages/about.html')
+    datas = {
+        "teams": Team.objects.all(),
+        "contact": Contact.objects.first(),
+        "aboutsectiontwo": AboutSectionTwo.objects.first(),
+        "aboutsectionone": AboutSectionOne.objects.first(),
+    }
+    return render(request,'pages/about.html', context=datas)
 
 
 def property(request):
-    return render(request,'pages/property.html')
+    return render(request,'pages/property.html', context={"houses": House.objects.all(),})
+
+
+
+
 
 def property_single(request):
     return render(request,'pages/property-single.html')

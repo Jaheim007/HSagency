@@ -227,17 +227,16 @@
 
         <div id="news-carousel" class="swiper">
           <div class="swiper-wrapper">
-
-            {% for item in latests %}
+            {% for latest in latests_news %}
               <div class="carousel-item-c swiper-slide">
                 <div class="card-box-b card-shadow news-box">
                   <div class="img-box-b">
-                    <img src="{{ item.house.main_image.url }}" alt="" class="img-b img-fluid">
+                    <img src="{{ latest.house.main_image.url }}" alt="" class="img-b img-fluid">
                   </div>
                   <div class="card-overlay">
                     <div class="card-header-b">
                       <div class="card-category-b">
-                        <a href="#" class="category-b"></a>
+                        <a href="#" class="category-b">{{ latest.house.real_estate_type }}</a>
                       </div>
                       <div class="card-title-b">
                         <h2 class="title-2">
@@ -246,7 +245,7 @@
                         </h2>
                       </div>
                       <div class="card-date">
-                        <span class="date-b"></span>
+                        <span class="date-b">{{ latest.available_date }}</span>
                       </div>
                     </div>
                   </div>
@@ -277,61 +276,34 @@
         <div id="testimonial-carousel" class="swiper">
           <div class="swiper-wrapper">
 
-            <div class="carousel-item-a swiper-slide">
-              <div class="testimonials-box">
-                <div class="row">
-                  <div class="col-sm-12 col-md-6">
-                    <div class="testimonial-img">
-                      <img src="{% static 'front/assets/img/testimonial-1.jpg' %}" alt="" class="img-fluid">
+            {% for testimonial in testimonials %}
+              <div class="carousel-item-a swiper-slide">
+                <div class="testimonials-box">
+                  <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                      <div class="testimonial-img">
+                        <img src="{{ testimonial.user.image.url }}" alt="" class="img-fluid">
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-sm-12 col-md-6">
-                    <div class="testimonial-ico">
-                      <i class="bi bi-chat-quote-fill"></i>
-                    </div>
-                    <div class="testimonials-content">
-                      <p class="testimonial-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea nam praesentium
-                        debitis hic ber quibusdam
-                        voluptatibus officia expedita corpori.
-                      </p>
-                    </div>
-                    <div class="testimonial-author-box">
-                      <img src="{% static 'front/assets/img/mini-testimonial-1.jpg' %}" alt="" class="testimonial-avatar">
-                      <h5 class="testimonial-author">Albert & Erika</h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End carousel item -->
-
-            <div class="carousel-item-a swiper-slide">
-              <div class="testimonials-box">
-                <div class="row">
-                  <div class="col-sm-12 col-md-6">
-                    <div class="testimonial-img">
-                      <img src="{% static 'front/assets/img/testimonial-2.jpg' %}" alt="" class="img-fluid">
-                    </div>
-                  </div>
-                  <div class="col-sm-12 col-md-6">
-                    <div class="testimonial-ico">
-                      <i class="bi bi-chat-quote-fill"></i>
-                    </div>
-                    <div class="testimonials-content">
-                      <p class="testimonial-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea nam praesentium
-                        debitis hic ber quibusdam
-                        voluptatibus officia expedita corpori.
-                      </p>
-                    </div>
-                    <div class="testimonial-author-box">
-                      <img src="{% static 'front/assets/img/mini-testimonial-2.jpg' %}" alt="" class="testimonial-avatar">
-                      <h5 class="testimonial-author">Pablo & Emma</h5>
+                    <div class="col-sm-12 col-md-6">
+                      <div class="testimonial-ico">
+                        <i class="bi bi-chat-quote-fill"></i>
+                      </div>
+                      <div class="testimonials-content">
+                        <p class="testimonial-text">
+                          {{ testimonial.message }}
+                        </p>
+                      </div>
+                      <div class="testimonial-author-box">
+                        <img src="{{ testimonial.user.image.url }}" alt="" class="testimonial-avatar">
+                        <h5 class="testimonial-author">{{ testimonial.user.username }}</h5>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div><!-- End carousel item -->
+              <!-- End carousel item -->
+            {% endfor %}
 
           </div>
         </div>
