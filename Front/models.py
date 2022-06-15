@@ -17,7 +17,6 @@ class SiteInfo(models.Model):
     
     def __str__(self):
         return self.title
-    
 
 class Contact(models.Model): 
     fb_link = models.URLField()
@@ -49,7 +48,6 @@ class HouseSlide(models.Model):
     """
     
     house_slide = models.ForeignKey(House, on_delete=models.CASCADE)
-    photo_house = models.ImageField()
     date_created = models.DateTimeField(default=now())
     date_updated = models.DateTimeField(auto_now=True)
     date_deleted = models.DateTimeField(auto_now=True)

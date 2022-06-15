@@ -78,7 +78,7 @@
                     <div class="card-overlay-a-content">
                       <div class="card-header-a">
                         <h2 class="card-title-a">
-                          <a href="property-single.html">
+                          <a href="{% url 'front_property_single' house.id %}">
                             {{ house.house_slide.title }}
                           </a>
                         </h2>
@@ -87,7 +87,7 @@
                         <div class="price-box d-flex">
                           <span class="price-a">rent | $ {{ house.house_slide.price }}</span>
                         </div>
-                        <a href="#" class="link-a">Click here to view
+                        <a href="{% url 'front_property_single' house.id %}" class="link-a">Click here to view
                           <span class="bi bi-chevron-right"></span>
                         </a>
                       </div>

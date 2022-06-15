@@ -35,6 +35,7 @@ def about(request):
 def property(request):
     return render(request,'pages/property.html', context={"houses": House.objects.all(),})
 
-def property_single(request):
-    return render(request,'pages/property-single.html')
-
+def property_single(request, property_id):
+    house = HouseSlide.objects.get(id=property_id)
+    
+    return render(request,'pages/property-single.html', context={"house": house})

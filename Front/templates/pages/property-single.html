@@ -11,18 +11,19 @@
         <div class="row">
           <div class="col-md-12 col-lg-8">
             <div class="title-single-box">
-              <h1 class="title-single">304 Blaster Up</h1>
-              <span class="color-text-a">Chicago, IL 606543</span>
+              <h1 class="title-single">{{ house.house_slide.title }}</h1>
+              <span class="color-text-a">{{ house.house_slide.city }}, {{ house.house_slide.contry }}</span>
             </div>
           </div>
           <div class="col-md-12 col-lg-4">
             <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <!-- Revenir plus tard pour ajouter la fonctionnalité fill d'arriane-->
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <a href="index.html">Home</a>
+                  <a href="{% url 'front_index' %}">Home</a>
                 </li>
                 <li class="breadcrumb-item">
-                  <a href="property-grid.html">Properties</a>
+                  <a href="{% url 'front_property_single' house.id %}">Properties</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
                   304 Blaster Up
@@ -43,10 +44,7 @@
             <div id="property-single-carousel" class="swiper">
               <div class="swiper-wrapper">
                 <div class="carousel-item-b swiper-slide">
-                  <img src="{% static 'front/assets/img/slide-1.jpg' %}" alt="">
-                </div>
-                <div class="carousel-item-b swiper-slide">
-                  <img src="{% static 'front/assets/img/slide-2.jpg' %}" alt="">
+                  <img src="{{ house.house_slide.main_image.url }}" alt="">
                 </div>
               </div>
             </div>
@@ -65,7 +63,7 @@
                       <span class="bi bi-cash">$</span>
                     </div>
                     <div class="card-title-c align-self-center">
-                      <h5 class="title-c">15000</h5>
+                      <h5 class="title-c">{{ house.house_slide.price }}</h5>
                     </div>
                   </div>
                 </div>
@@ -81,37 +79,37 @@
                     <ul class="list">
                       <li class="d-flex justify-content-between">
                         <strong>Property ID:</strong>
-                        <span>1134</span>
+                        <span>{{ house.id }}</span>
                       </li>
                       <li class="d-flex justify-content-between">
                         <strong>Location:</strong>
-                        <span>Chicago, IL 606543</span>
+                        <span>{{ house.house_slide.city }}, {{ house.house_slide.contry }}</span>
                       </li>
                       <li class="d-flex justify-content-between">
                         <strong>Property Type:</strong>
-                        <span>House</span>
+                        <span>{{ house.house_slide.real_estate_type }}</span>
                       </li>
                       <li class="d-flex justify-content-between">
                         <strong>Status:</strong>
-                        <span>Sale</span>
+                        <span>{{ house.house_slide.house_type }}</span>
                       </li>
                       <li class="d-flex justify-content-between">
                         <strong>Area:</strong>
-                        <span>340m
+                        <span>{{ house.house_slide.area }}m
                           <sup>2</sup>
                         </span>
                       </li>
                       <li class="d-flex justify-content-between">
                         <strong>Beds:</strong>
-                        <span>4</span>
+                        <span>{{ house.house_slide.beds }}</span>
                       </li>
                       <li class="d-flex justify-content-between">
                         <strong>Baths:</strong>
-                        <span>2</span>
+                        <span>{{ house.house_slide.rooms_number }}</span>
                       </li>
                       <li class="d-flex justify-content-between">
                         <strong>Garage:</strong>
-                        <span>1</span>
+                        <span>{{ house.house_slide.garage_number }}</span>
                       </li>
                     </ul>
                   </div>
@@ -196,53 +194,51 @@
             </div>
             <div class="row">
               <div class="col-md-6 col-lg-4">
-                <img src="{% static 'front/assets/img/agent-4.jpg' %}" alt="" class="img-fluid">
+                <img src="{{ house.house_slide.info_agent.user.image.url }}" alt="" class="img-fluid">
               </div>
               <div class="col-md-6 col-lg-4">
                 <div class="property-agent">
-                  <h4 class="title-agent">Anabella Geller</h4>
+                  <h4 class="title-agent">{{ house.house_slide.info_agent.user.first_name }} {{ house.house_slide.info_agent.user.last_name }}</h4>
                   <p class="color-text-a">
-                    Nulla porttitor accumsan tincidunt. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
-                    dui. Quisque velit nisi,
-                    pretium ut lacinia in, elementum id enim.
+                    {{ house.house_slide.description }}
                   </p>
                   <ul class="list-unstyled">
                     <li class="d-flex justify-content-between">
                       <strong>Phone:</strong>
-                      <span class="color-text-a">(222) 4568932</span>
+                      <span class="color-text-a">{{ house.house_slide.info_agent.user.phone}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Mobile:</strong>
-                      <span class="color-text-a">777 287 378 737</span>
+                      <span class="color-text-a">{{ house.house_slide.info_agent.user.phone}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Email:</strong>
-                      <span class="color-text-a">annabella@example.com</span>
+                      <span class="color-text-a">{{ house.house_slide.info_agent.user.email}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Skype:</strong>
-                      <span class="color-text-a">Annabela.ge</span>
+                      <span class="color-text-a"></span>
                     </li>
                   </ul>
                   <div class="socials-a">
                     <ul class="list-inline">
                       <li class="list-inline-item">
-                        <a href="#">
+                        <a href="{{ house.house_slide.info_agent.fb_link}}">
                           <i class="bi bi-facebook" aria-hidden="true"></i>
                         </a>
                       </li>
                       <li class="list-inline-item">
-                        <a href="#">
+                        <a href="{{ house.house_slide.info_agent.twitter_link}}">
                           <i class="bi bi-twitter" aria-hidden="true"></i>
                         </a>
                       </li>
                       <li class="list-inline-item">
-                        <a href="#">
+                        <a href="{{ house.house_slide.info_agent.insta_link}}">
                           <i class="bi bi-instagram" aria-hidden="true"></i>
                         </a>
                       </li>
                       <li class="list-inline-item">
-                        <a href="#">
+                        <a href="{{ house.house_slide.info_agent.linkedin_link}}">
                           <i class="bi bi-linkedin" aria-hidden="true"></i>
                         </a>
                       </li>

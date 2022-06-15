@@ -23,6 +23,10 @@ class HouseType(models.Model):
     date_updated = models.DateTimeField(auto_now=True)
     date_deleted = models.DateTimeField(auto_now=True)
     
+    def __str__(self):
+        return self.type_category
+    
+    
 class HousePaymentPeriod(models.Model):
     name = models.CharField(max_length=255)
     isactive = models.BooleanField(default=True)
