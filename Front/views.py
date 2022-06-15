@@ -35,10 +35,6 @@ def about(request):
 def property(request):
     return render(request,'pages/property.html', context={"houses": House.objects.all(),})
 
-
-
-
-
 def property_single(request):
     return render(request,'pages/property-single.html')
 
