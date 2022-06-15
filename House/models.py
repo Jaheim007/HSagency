@@ -8,16 +8,20 @@ class RealEstateType(models.Model):
     name = models.CharField(max_length=255)
     isactive = models.BooleanField(default=True) 
     description = models.TextField()
-    
-    created = models.DateTimeField(default=now)
-    delete_at = models.DateTimeField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True , null=True)
+            
+    date_created = models.DateTimeField(default=now())
+    date_updated = models.DateTimeField(auto_now=True)
+    date_deleted = models.DateTimeField(auto_now=True)
     
     def __str__(self):
         return self.name
     
 class HouseType(models.Model):
-    type_category = models.CharField(max_length=225)     
+    type_category = models.CharField(max_length=225)
+    
+    date_created = models.DateTimeField(default=now())
+    date_updated = models.DateTimeField(auto_now=True)
+    date_deleted = models.DateTimeField(auto_now=True)
     
 class HousePaymentPeriod(models.Model):
     name = models.CharField(max_length=255)
@@ -25,9 +29,9 @@ class HousePaymentPeriod(models.Model):
     description = models.TextField(null=True) 
     symbol = models.CharField(max_length=2)
     
-    created = models.DateTimeField(default=now)
-    delete_at = models.DateTimeField(null=True, blank=True)
-    updated_at = models.DateTimeField(null=True, blank=True) 
+    date_created = models.DateTimeField(default=now())
+    date_updated = models.DateTimeField(auto_now=True)
+    date_deleted = models.DateTimeField(auto_now=True)
     
     def __str__(self):
         return self.name
@@ -52,7 +56,9 @@ class House(models.Model):
     longitude = models.DecimalField(max_digits=5, decimal_places=2)
     main_image = models.ImageField()
     
-    created = models.DateTimeField(default=now)
+    date_created = models.DateTimeField(default=now())
+    date_updated = models.DateTimeField(auto_now=True)
+    date_deleted = models.DateTimeField(auto_now=True)
     
     def __str__(self):
         return self.title
@@ -73,6 +79,7 @@ class LatestNews(models.Model):
     house = models.ForeignKey(House, on_delete=models.CASCADE)
     message = models.CharField(max_length=50)
     available_date = models.DateTimeField()
-    created = models.DateTimeField(default=now)
-    delete_at = models.DateTimeField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
+    
+    date_created = models.DateTimeField(default=now())
+    date_updated = models.DateTimeField(auto_now=True)
+    date_deleted = models.DateTimeField(auto_now=True)

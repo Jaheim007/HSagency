@@ -13,7 +13,7 @@ def index(request):
         "latests ": LatestNews.objects.all(),
     }
     return render(request,'pages/index.html', context=datas)
-    
+
 
 def about(request):
     return render(request,'pages/about.html')
@@ -21,4 +21,7 @@ def about(request):
 
 def property(request):
     return render(request,'pages/property.html')
+
+def property_single(request):
+    return render(request,'pages/property-single.html')
 

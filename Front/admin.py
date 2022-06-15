@@ -5,7 +5,7 @@ from .models import HouseSlide, SiteService
 class Slide(admin.ModelAdmin):
     list_display = (
         "house_slide", 
-        "created", 
+        "date_created", 
     )
 
 @admin.register(SiteService)
@@ -13,5 +13,5 @@ class SiteService(admin.ModelAdmin):
     list_display = (
         "title", 
         "description", 
-        "created",   
+        "date_created",   
     )

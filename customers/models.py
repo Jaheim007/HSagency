@@ -21,9 +21,9 @@ class User(AbstractUser):
     birth_date = models.DateField(null=True, blank=True)
     user_type = models.CharField(choices=USER_TYPE, max_length=255)
     
-    created_at = models.DateTimeField(default=timezone.now)
-    delete_at = models.DateTimeField(null=True, blank=True)
-    updated_at = models.DateTimeField(null=True, blank=True)
+    date_created = models.DateTimeField(auto_now=True)
+    date_updated = models.DateTimeField(auto_now=True)
+    date_deleted = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.username
@@ -37,9 +37,9 @@ class InfoAgent(models.Model):
     linkedin_link = models.URLField(blank=True, null=True)
     whatsapp_number = PhoneNumberField(blank=True, null=True)
     
-    created = models.DateTimeField(default=timezone.now)
-    delete_at = models.DateTimeField(blank=True, null=True)
-    updated_at = models.DateTimeField(null=True, blank=True)
+    date_created = models.DateTimeField(auto_now=True)
+    date_updated = models.DateTimeField(auto_now=True)
+    date_deleted = models.DateTimeField(auto_now=True)
     
     def __str__(self):
         return self.user.username

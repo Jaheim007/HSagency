@@ -11,9 +11,9 @@ class SiteInfo(models.Model):
     full_site_color = models.CharField(max_length=255)
     default_mode = models.BooleanField(default=True)
     
-    created = models.DateTimeField(default=now)
-    delete_at = models.DateTimeField(null=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    date_created = models.DateTimeField(default=now())
+    date_updated = models.DateTimeField(auto_now=True)
+    date_deleted = models.DateTimeField(auto_now=True)
     
     def __str__(self):
         return self.title
@@ -30,9 +30,9 @@ class Contact(models.Model):
     latitude = models.DecimalField(max_digits=5, decimal_places=2)
     longitude = models.DecimalField(max_digits=5 , decimal_places=2)
     
-    created = models.DateTimeField(default=now)
-    delete_at = models.DateTimeField(null=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    date_created = models.DateTimeField(default=now())
+    date_updated = models.DateTimeField(auto_now=True)
+    date_deleted = models.DateTimeField(auto_now=True)
     
     def __str__(self):
         return self.fb_link
@@ -48,12 +48,12 @@ class HouseSlide(models.Model):
         str : Elle nous retoune le titre de chaque instance crée
     """
     
-    photo_house = models.ImageField()
-    date_created = models.DateTimeField()
-    date_update = models.DateTimeField()
-    
     house_slide = models.ForeignKey(House, on_delete=models.CASCADE)
-    created = models.DateTimeField(default=now)
+    photo_house = models.ImageField()
+    date_created = models.DateTimeField(default=now())
+    date_updated = models.DateTimeField(auto_now=True)
+    date_deleted = models.DateTimeField(auto_now=True)
+    
     
     def __str__(self):
         return self.house_slide.title
@@ -72,7 +72,10 @@ class SiteService(models.Model):
     title = models.CharField(max_length=255)
     description = models.CharField(max_length=1000)
     photo_service = models.ImageField()
-    created = models.DateTimeField(default=now)
+    
+    date_created = models.DateTimeField(default=now())
+    date_updated = models.DateTimeField(auto_now=True)
+    date_deleted = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
