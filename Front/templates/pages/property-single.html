@@ -17,18 +17,12 @@
           </div>
           <div class="col-md-12 col-lg-4">
             <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
-              <!-- Revenir plus tard pour ajouter la fonctionnalité fill d'arriane-->
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                  <a href="{% url 'front_index' %}">Home</a>
-                </li>
-                <li class="breadcrumb-item">
-                  <a href="{% url 'front_property_single' house.id %}">Properties</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                  304 Blaster Up
-                </li>
-              </ol>
+
+              {% if breadcrumbs %}
+                <div class="container">
+                    {% include "dynamic_breadcrumbs/breadcrumbs.html" with breadcrumbs=breadcrumbs %}
+                </div>
+              {% endif %}
             </nav>
           </div>
         </div>
