@@ -4,7 +4,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django_countries.fields import CountryField
 from customers.models import InfoAgent
 
-class RealEstateType(models.Model): 
+class RealEstateType(models.Model):
     name = models.CharField(max_length=255)
     isactive = models.BooleanField(default=True) 
     description = models.TextField()
@@ -26,7 +26,6 @@ class HouseType(models.Model):
     def __str__(self):
         return self.type_category
     
-    
 class HousePaymentPeriod(models.Model):
     name = models.CharField(max_length=255)
     isactive = models.BooleanField(default=True)
@@ -40,9 +39,10 @@ class HousePaymentPeriod(models.Model):
     def __str__(self):
         return self.name
        
-class House(models.Model): 
+class House(models.Model):
     info_agent = models.ForeignKey(InfoAgent, on_delete=models.CASCADE)  
-    
+    #house_image = models.ForeignKey(HouseImage, on_delete=models.CASCADE) 
+     
     contry = CountryField(blank_label='(select country)')
     city = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
@@ -78,7 +78,8 @@ class HouseImage(models.Model):
     updated_at = models.DateTimeField(null=True, blank=True)
         
     def __str__(self):
-        return self.house         
+        return self.house             
+ 
 
 class LatestNews(models.Model):
     info_agent = models.ForeignKey(InfoAgent, on_delete=models.CASCADE)

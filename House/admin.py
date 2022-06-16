@@ -45,7 +45,7 @@ class HouseType(admin.ModelAdmin):
     list_display = (
         "type_category",
     )
-    
+
 @admin.register(RealEstateType)
 class RealEstateType(admin.ModelAdmin):
     list_display = (

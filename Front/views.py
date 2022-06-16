@@ -10,6 +10,7 @@ from Front.models import (
 from customers.models import InfoAgent, Testimonials
 from House.models import LatestNews, House
 
+
 def index(request):
     datas = {
         "house_sliders": HouseSlide.objects.all(),
@@ -17,7 +18,6 @@ def index(request):
         "agents": InfoAgent.objects.all(),
         "latests_news": LatestNews.objects.all(),
         "testimonials": Testimonials.objects.all(),
-        "contact": Contact.objects.first(),
     }
     return render(request,'pages/index.html', context=datas)
 
@@ -25,7 +25,6 @@ def index(request):
 def about(request):
     datas = {
         "teams": Team.objects.all(),
-        "contact": Contact.objects.first(),
         "aboutsectiontwo": AboutSectionTwo.objects.first(),
         "aboutsectionone": AboutSectionOne.objects.first(),
     }
@@ -34,6 +33,7 @@ def about(request):
 
 def property(request):
     return render(request,'pages/property.html', context={"houses": House.objects.all(),})
+
 
 def property_single(request, property_id):
     house = HouseSlide.objects.get(id=property_id)
