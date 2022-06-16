@@ -44,8 +44,13 @@
             <div id="property-single-carousel" class="swiper">
               <div class="swiper-wrapper">
                 <div class="carousel-item-b swiper-slide">
-                  <img src="{{ house.house_slide.main_image.url }}" alt="">
+                   <img src="{{ house.house_slide.main_image.url }}" alt="">
                 </div>
+                {% for photo in photos %}
+                  <div class="carousel-item-b swiper-slide">
+                    <img src="{{ photo.image.url }}" alt="">
+                  </div>
+                {% endfor %}
               </div>
             </div>
             <div class="property-single-carousel-pagination carousel-pagination"></div>

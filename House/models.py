@@ -41,7 +41,6 @@ class HousePaymentPeriod(models.Model):
        
 class House(models.Model):
     info_agent = models.ForeignKey(InfoAgent, on_delete=models.CASCADE)  
-    #house_image = models.ForeignKey(HouseImage, on_delete=models.CASCADE) 
      
     contry = CountryField(blank_label='(select country)')
     city = models.CharField(max_length=255)
@@ -71,15 +70,14 @@ class House(models.Model):
 
 class HouseImage(models.Model):
     house = models.ForeignKey(House, on_delete=models.CASCADE)
-    image = models.URLField()
+    image = models.ImageField()
     
     created = models.DateTimeField(default=now)
-    delete_at = models.DateTimeField(null=True, blank=True)
-    updated_at = models.DateTimeField(null=True, blank=True)
+    delete_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
         
     def __str__(self):
-        return self.house             
- 
+        return str(self.house)           
 
 class LatestNews(models.Model):
     info_agent = models.ForeignKey(InfoAgent, on_delete=models.CASCADE)

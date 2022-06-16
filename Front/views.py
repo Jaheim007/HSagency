@@ -1,3 +1,4 @@
+from pprint import pprint
 from django.shortcuts import render
 from Front.models import (
     HouseSlide,
@@ -8,7 +9,7 @@ from Front.models import (
     Team,
 )
 from customers.models import InfoAgent, Testimonials
-from House.models import LatestNews, House
+from House.models import LatestNews, House, HouseImage
 
 
 def index(request):
@@ -30,12 +31,13 @@ def about(request):
     }
     return render(request,'pages/about.html', context=datas)
 
-
+ 
 def property(request):
     return render(request,'pages/property.html', context={"houses": House.objects.all(),})
 
 
 def property_single(request, property_id):
     house = HouseSlide.objects.get(id=property_id)
+    photos = HouseImage.objects.filter(house=house.house_slide)
     
-    return render(request,'pages/property-single.html', context={"house": house})
+    return render(request,'pages/property-single.html', context={"house": house, "photos": photos})
