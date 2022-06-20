@@ -6,6 +6,8 @@ from .models import (
     HouseType,
     RealEstateType,
     LatestNews,
+    City,
+    MessageAgent
 )
 
 
@@ -60,4 +62,18 @@ class LatestNews(admin.ModelAdmin):
         'info_agent',
         'message',
         'available_date' 
+    )
+    
+@admin.register(City)
+class Ciry(admin.ModelAdmin):
+    list_display = (
+        'name',
+    )
+    
+@admin.register(MessageAgent)
+class MessageAgent(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'email',
+        'message',
     )

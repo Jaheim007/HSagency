@@ -38,10 +38,17 @@ class HousePaymentPeriod(models.Model):
     
     def __str__(self):
         return self.name
-       
+
+class City(models.Model):
+    name = models.CharField(max_length=150)
+    
+    date_created = models.DateTimeField(auto_now=True)
+    date_updated = models.DateTimeField(auto_now_add=True)
+    date_deleted = models.DateTimeField(auto_now=True)
+
 class House(models.Model):
     info_agent = models.ForeignKey(InfoAgent, on_delete=models.CASCADE)  
-     
+    
     contry = CountryField(blank_label='(select country)')
     city = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
@@ -87,4 +94,13 @@ class LatestNews(models.Model):
     
     date_created = models.DateTimeField(default=now())
     date_updated = models.DateTimeField(auto_now=True)
+    date_deleted = models.DateTimeField(auto_now=True)
+    
+class MessageAgent(models.Model):
+    name = models.CharField(max_length=150)
+    email = models.EmailField()
+    message = models.TextField(max_length=1000)
+    
+    date_created = models.DateTimeField(auto_now=True)
+    date_updated = models.DateTimeField(auto_now_add=True)
     date_deleted = models.DateTimeField(auto_now=True)
