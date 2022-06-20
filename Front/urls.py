@@ -9,4 +9,5 @@ urlpatterns = [
     path('contact-agent/', views.PagePropertySinglePost.as_view(), name="front_contact_agent"),
     path('agent-grid/', views.front_agent_grid, name="front_agent_grid"),
     path('agent-single/<int:agent_id>/', views.front_agent_sinle, name="front_agent_single"),
+    path('search-property/', views.SearchProperty.as_view(), name="front_search_property"),
 ]

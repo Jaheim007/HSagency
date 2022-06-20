@@ -71,6 +71,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 "HSAgency.context_processors.info_contact",
+                "HSAgency.context_processors.type_house",
+                "HSAgency.context_processors.list_cities",
                 "dynamic_breadcrumbs.context_processors.breadcrumbs",
             ],
         },

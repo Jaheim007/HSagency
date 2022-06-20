@@ -65,7 +65,33 @@ class PagePropertySinglePost(View):
                 }
             }
         })
-       
+      
+class SearchProperty(View):
+    def post(self, request):
+        # Récupération des données du formulaire de recherche
+        type_house = int(request.POST.get("type_house"))
+        city = int(request.POST.get("city"))
+        price = int(request.POST.get("price")) if request.POST.get("price") else 0
+        bedrooms = int(request.POST.get("bedrooms"))
+        garage = int(request.POST.get("garage"))
+        bathrooms = int(request.POST.get("bathrooms"))
+        houses = House.objects.all()
+
+        # Filtrage des maisons par priorité
+        if type_house:
+            houses = houses.filter(house_type=type_house)
+        if city:
+            houses = houses.filter(city=city)
+        if price:
+            houses = houses.filter(price__lte=price).order_by("price")
+        if bedrooms:
+            houses = houses.filter(beds__lte=bedrooms)
+        if garage:
+            houses = houses.filter(garage_number__lte=garage)
+        if bathrooms:
+            houses = houses.filter(toillete_number__lte=bathrooms)
+            
+        return render(request,'pages/property.html', context={"houses": houses})
 
 def index(request):
     datas = {

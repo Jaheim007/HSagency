@@ -7,7 +7,7 @@ from .models import (
     RealEstateType,
     LatestNews,
     City,
-    MessageAgent
+    MessageAgent,
 )
 
 
@@ -22,7 +22,8 @@ class HouseInfo(admin.ModelAdmin):
         'price',
         'house_type',
         'latitude',
-        'longitude'
+        'longitude',
+        'city',
     )
     
 
