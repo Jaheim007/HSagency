@@ -19,6 +19,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.http import HttpResponse
 
+# Page property single000
 class PagePropertySingleGet(View):
     def get(self, request, property_id):
         house = HouseSlide.objects.get(id=property_id)
@@ -66,7 +67,6 @@ class PagePropertySinglePost(View):
         })
        
 
-
 def index(request):
     datas = {
         "house_sliders": HouseSlide.objects.all(),
@@ -89,5 +89,15 @@ def about(request):
  
 def property(request):
     return render(request,'pages/property.html', context={"houses": House.objects.all(),})
+     
+        
+def front_agent_grid(request):
+    return render(request,'pages/agents-grid.html', context={"agents": InfoAgent.objects.all(),})
+     
+     
+def front_agent_sinle(request, agent_id):
+    agent = InfoAgent.objects.get(id=agent_id)
+    houses = House.objects.filter(info_agent=agent_id)
+    return render(request,'pages/agent-single.html', context={"agent": agent, "houses": houses})
      
         
