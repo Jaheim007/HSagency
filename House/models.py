@@ -49,7 +49,6 @@ class City(models.Model):
     def __str__(self):
         return self.name
     
-
 class House(models.Model):
     info_agent = models.ForeignKey(InfoAgent, on_delete=models.CASCADE)  
     
@@ -96,6 +95,15 @@ class LatestNews(models.Model):
     date_updated = models.DateTimeField(auto_now=True)
     date_deleted = models.DateTimeField(auto_now=True)
     
+class ContactSite(models.Model):
+    name = models.CharField(max_length=150)    
+    email = models.EmailField()    
+    subject = models.CharField(max_length=150)    
+    message = models.CharField(max_length=1000) 
+    
+    def __str__(self):
+        return self.name   
+
 class MessageAgent(models.Model):
     name = models.CharField(max_length=150)
     email = models.EmailField()
