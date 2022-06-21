@@ -11,8 +11,8 @@
         <div class="row">
           <div class="col-md-12 col-lg-8">
             <div class="title-single-box">
-              <h1 class="title-single">{{ house.house_slide.title }}</h1>
-              <span class="color-text-a">{{ house.house_slide.city }}, {{ house.house_slide.contry }}</span>
+              <h1 class="title-single">{{ house.title }}</h1>
+              <span class="color-text-a">{{ house.city }}, {{ house.contry }}</span>
             </div>
           </div>
           <div class="col-md-12 col-lg-4">
@@ -38,7 +38,7 @@
             <div id="property-single-carousel" class="swiper">
               <div class="swiper-wrapper">
                 <div class="carousel-item-b swiper-slide">
-                   <img src="{{ house.house_slide.main_image.url }}" alt="">
+                   <img src="{{ house.main_image.url }}" alt="">
                 </div>
                 {% for photo in photos %}
                   <div class="carousel-item-b swiper-slide">
@@ -62,7 +62,7 @@
                       <span class="bi bi-cash">$</span>
                     </div>
                     <div class="card-title-c align-self-center">
-                      <h5 class="title-c">{{ house.house_slide.price }}</h5>
+                      <h5 class="title-c">{{ house.price }}</h5>
                     </div>
                   </div>
                 </div>
@@ -82,33 +82,33 @@
                       </li>
                       <li class="d-flex justify-content-between">
                         <strong>Location:</strong>
-                        <span>{{ house.house_slide.city }}, {{ house.house_slide.contry }}</span>
+                        <span>{{ house.city }}, {{ house.contry }}</span>
                       </li>
                       <li class="d-flex justify-content-between">
                         <strong>Property Type:</strong>
-                        <span>{{ house.house_slide.real_estate_type }}</span>
+                        <span>{{ house.real_estate_type }}</span>
                       </li>
                       <li class="d-flex justify-content-between">
                         <strong>Status:</strong>
-                        <span>{{ house.house_slide.house_type }}</span>
+                        <span>{{ house.house_type }}</span>
                       </li>
                       <li class="d-flex justify-content-between">
                         <strong>Area:</strong>
-                        <span>{{ house.house_slide.area }}m
+                        <span>{{ house.area }}m
                           <sup>2</sup>
                         </span>
                       </li>
                       <li class="d-flex justify-content-between">
                         <strong>Beds:</strong>
-                        <span>{{ house.house_slide.beds }}</span>
+                        <span>{{ house.beds }}</span>
                       </li>
                       <li class="d-flex justify-content-between">
                         <strong>Baths:</strong>
-                        <span>{{ house.house_slide.rooms_number }}</span>
+                        <span>{{ house.rooms_number }}</span>
                       </li>
                       <li class="d-flex justify-content-between">
                         <strong>Garage:</strong>
-                        <span>{{ house.house_slide.garage_number }}</span>
+                        <span>{{ house.garage_number }}</span>
                       </li>
                     </ul>
                   </div>
@@ -193,26 +193,26 @@
             </div>
             <div class="row">
               <div class="col-md-6 col-lg-4">
-                <img src="{{ house.house_slide.info_agent.user.image.url }}" alt="" class="img-fluid">
+                <img src="{{ house.info_agent.user.image.url }}" alt="" class="img-fluid">
               </div>
               <div class="col-md-6 col-lg-4">
                 <div class="property-agent">
-                  <h4 class="title-agent">{{ house.house_slide.info_agent.user.first_name }} {{ house.house_slide.info_agent.user.last_name }}</h4>
+                  <h4 class="title-agent">{{ house.info_agent.user.first_name }} {{ house.info_agent.user.last_name }}</h4>
                   <p class="color-text-a">
-                    {{ house.house_slide.description }}
+                    {{ house.description }}
                   </p>
                   <ul class="list-unstyled">
                     <li class="d-flex justify-content-between">
                       <strong>Phone:</strong>
-                      <span class="color-text-a">{{ house.house_slide.info_agent.user.phone}}</span>
+                      <span class="color-text-a">{{ house.info_agent.user.phone}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Mobile:</strong>
-                      <span class="color-text-a">{{ house.house_slide.info_agent.user.phone}}</span>
+                      <span class="color-text-a">{{ house.info_agent.user.phone}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Email:</strong>
-                      <span class="color-text-a">{{ house.house_slide.info_agent.user.email}}</span>
+                      <span class="color-text-a">{{ house.info_agent.user.email}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Skype:</strong>
@@ -222,22 +222,22 @@
                   <div class="socials-a">
                     <ul class="list-inline">
                       <li class="list-inline-item">
-                        <a href="{{ house.house_slide.info_agent.fb_link}}">
+                        <a href="{{ house.info_agent.fb_link}}">
                           <i class="bi bi-facebook" aria-hidden="true"></i>
                         </a>
                       </li>
                       <li class="list-inline-item">
-                        <a href="{{ house.house_slide.info_agent.twitter_link}}">
+                        <a href="{{ house.info_agent.twitter_link}}">
                           <i class="bi bi-twitter" aria-hidden="true"></i>
                         </a>
                       </li>
                       <li class="list-inline-item">
-                        <a href="{{ house.house_slide.info_agent.insta_link}}">
+                        <a href="{{ house.info_agent.insta_link}}">
                           <i class="bi bi-instagram" aria-hidden="true"></i>
                         </a>
                       </li>
                       <li class="list-inline-item">
-                        <a href="{{ house.house_slide.info_agent.linkedin_link}}">
+                        <a href="{{ house.info_agent.linkedin_link}}">
                           <i class="bi bi-linkedin" aria-hidden="true"></i>
                         </a>
                       </li>

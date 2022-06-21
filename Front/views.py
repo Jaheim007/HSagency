@@ -22,8 +22,8 @@ from django.http import HttpResponse
 # Page property single000
 class PagePropertySingleGet(View):
     def get(self, request, property_id):
-        house = HouseSlide.objects.get(id=property_id)
-        photos = HouseImage.objects.filter(house=house.house_slide)
+        house = House.objects.get(id=property_id)
+        photos = HouseImage.objects.filter(house=house)
         
         return render(request,'pages/property-single.html', context={"house": house, "photos": photos})
     
@@ -92,6 +92,7 @@ class SearchProperty(View):
             houses = houses.filter(toillete_number__lte=bathrooms)
             
         return render(request,'pages/property.html', context={"houses": houses})
+
 
 def index(request):
     datas = {
