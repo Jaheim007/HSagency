@@ -25,7 +25,7 @@ class Contact(models.Model):
     linkedin_link = models.URLField()
     number_phone = PhoneNumberField()
     email = models.EmailField(max_length=50)
-    
+    localisation_map = models.URLField()
     latitude = models.DecimalField(max_digits=5, decimal_places=2)
     longitude = models.DecimalField(max_digits=5 , decimal_places=2)
     
