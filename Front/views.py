@@ -13,7 +13,8 @@ from House.models import (
     LatestNews,
     House,
     HouseImage,
-    MessageAgent
+    MessageAgent,
+    ContactSite,
 )
 from django.shortcuts import render, redirect
 from django.views.generic import View
@@ -44,7 +45,6 @@ class PagePropertySinglePost(View):
             and not message.isspace()
             and re.search(regex, email)
         ):
-            print(email)
             MessageAgent.objects.create(name=name, email=email, message=message)
             return HttpResponse(headers={
                 "HX-Trigger": json.dumps({
@@ -57,13 +57,13 @@ class PagePropertySinglePost(View):
                 ) 
             })
         return HttpResponse(headers={
-            "HX-Trigger": {
+            "HX-Trigger": json.dumps({
                 "showMessage": {
                     "icon": "error",
                     "title": "Echec de la prise de contact avec l'argent",
-                    "message": "Vôtre message n'a été envoyé cas une erreur est suvénu"
+                    "message": "Une erreur est suvenu lors de l'envoie du formulaire"
                 }
-            }
+            })
         })
       
 class SearchProperty(View):
@@ -127,5 +127,43 @@ def front_agent_sinle(request, agent_id):
     houses = House.objects.filter(info_agent=agent_id)
     return render(request,'pages/agent-single.html', context={"agent": agent, "houses": houses})
 
-def front_contact(request):
-    return render(request,'pages/contact.html', context={})
+class PageContact(View):
+    def get(self, request):
+        return render(request,'pages/contact.html')
+    
+    def post(self, request):
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        subject = request.POST.get("subject")
+        message = request.POST.get("message")
+        regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+        
+        if (
+            name
+            and not name.isspace()
+            and subject
+            and not subject.isspace()
+            and message
+            and not message.isspace()
+            and re.search(regex, email)
+        ):  
+            ContactSite.objects.create(name=name, email=email, subject=subject, message=message)
+            return HttpResponse(headers={
+                "HX-Trigger": json.dumps({
+                    "showMessage": {
+                        "icon": "success",
+                        "title": "Prise de contact envoyé",
+                        "message": "La prise de contact a bien été envoyé",
+                    }
+                })
+            })
+        return HttpResponse(headers={
+            "HX-Trigger": json.dumps({
+                "showMessage": {
+                    "icon": "error",
+                    "title": "Echec de la prise de contact",
+                    "message": "Une erreur est suvenu lors de l'envoie du formulaire",
+                }
+            })
+        })
+         

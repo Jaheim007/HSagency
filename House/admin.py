@@ -8,6 +8,7 @@ from .models import (
     LatestNews,
     City,
     MessageAgent,
+    ContactSite
 )
 
 
@@ -73,6 +74,14 @@ class Ciry(admin.ModelAdmin):
     
 @admin.register(MessageAgent)
 class MessageAgent(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'email',
+        'message',
+    )
+    
+@admin.register(ContactSite)
+class ContactSite(admin.ModelAdmin):
     list_display = (
         'name',
         'email',
