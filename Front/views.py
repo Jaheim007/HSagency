@@ -126,5 +126,6 @@ def front_agent_sinle(request, agent_id):
     agent = InfoAgent.objects.get(id=agent_id)
     houses = House.objects.filter(info_agent=agent_id)
     return render(request,'pages/agent-single.html', context={"agent": agent, "houses": houses})
-     
-        
+
+def front_contact(request):
+    return render(request,'pages/contact.html', context={})
