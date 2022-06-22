@@ -124,7 +124,7 @@ def front_agent_grid(request):
      
 def front_agent_sinle(request, agent_id):
     agent = InfoAgent.objects.get(id=agent_id)
-    houses = House.objects.filter(info_agent=agent_id)
+    houses = House.objects.filter(info_agent=agent.id)
     return render(request,'pages/agent-single.html', context={"agent": agent, "houses": houses})
 
 class PageContact(View):
