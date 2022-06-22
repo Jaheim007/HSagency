@@ -28,7 +28,7 @@
           </div>
         </div>
       </div>
-    </section><!-- End Intro Single-->
+    </section><!-- End Intro Single-->    
 
     <!-- ======= Property Grid ======= -->
     <section class="property-grid grid">
@@ -95,6 +95,8 @@
                 </div>
               </div>
             </div>
+          {% empty %}
+            <h3 class="color-b">Aucune maison ne correspont a vôtre recherche</h3>
           {% endfor %}
         </div>
         <div class="row">
